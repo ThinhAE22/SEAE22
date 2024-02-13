@@ -42,6 +42,14 @@ def check_limits(limits):
         return True
     else:
         return False
+    
+
+#Check role function
+def check_role(priority):
+    if priority == "first priority":
+        return True
+    elif priority == "second priority":
+        return False
 
 # This is a stub implementation for function read_sensors
 # returning a fixed sensor readings (four sensors, five readings per
