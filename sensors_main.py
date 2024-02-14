@@ -17,12 +17,11 @@ def main():
         print("Error: Incorrect command line arguments.")'''
 
     priority = parse_priority()
-    if len(priority) > 0 and check_role(priority):
+    if check_role(priority) == True:
         print("Hello Administrator")
-    else:
+    elif check_role(priority) == False:
         print("Hello Operator")
-
-    
+        
 
 # This is the parse_limits function for getting the temperature
 # limits from the command line parameters. Returns an array
@@ -41,13 +40,14 @@ def parse_limits():
 
 #parse_role
 def parse_priority():
-    priority = []
+    priority = ""
     try:
-        priority = [str(sys.argv[1])]
+        priority = str(sys.argv[1])
     except Exception:
         pass
 
     return priority
+
 
 
 # This is the check_limits function that gets an array containing the
