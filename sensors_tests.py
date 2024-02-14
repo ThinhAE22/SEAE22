@@ -36,36 +36,52 @@ class TestSensors(unittest.TestCase):
     #Check user test
     #2nd priority mean only access to monitoring temperature and being attendance check
     def test_check_operator(self):
-        priority = "second priority"
+        priority = "operator"
         result = sensors_main.check_role(priority)
         self.assertFalse(result, False)
     #1st priority mean the user having 2nd access with addition to sensor number configurate and change time interval for the sensors
     def test_check_administrator(self):
-        priority = "first priority"
+        priority = "administrator"
         result = sensors_main.check_role(priority)
         self.assertTrue(result, True)
 
     ##########################
     # Integration test cases #
     ##########################
+    
+    '''@patch('builtins.print')
+    def test_check_role_administrator_integration2(self, mock_print):
+        pass
 
-    # TODO: Complete test case test_check_limits_integration1 code so
-    # that tests the check_limits function from main function.
+        
+        sys.argv = [["sensors_main.py"],["administrator"]]
 
-    # NOTE: Redirect console output to sys.stdout in order to check it
-    # from the test cases (here, from the integration test case). Also, use
-    # mock_print as a parameter of the test case function.
-    
-    
-    
+        # 2. call main with the command line parameters set up
+        sensors_main.cri()
+
+        mock_print.assert_called_with("Hello Administrator")'''
+
     @patch('builtins.print')
+    def test_check_role_administrator_integration2(self, mock_print):
+        pass
+
+        
+        sys.argv = [["sensors_main.py"],["operator"]]
+
+        # 2. call main with the command line parameters set up
+        sensors_main.main()
+
+        mock_print.assert_called_with("Hello Operator")
+
+    
+    '''@patch('builtins.print')
     def test_check_limits_integration1(self, mock_print):
         pass
 
         
         # 1. set command line parameters, since they are where main gets the
         # min and max temperature settings
-        sys.argv = [["sensor_main.py"],[22],[18]]
+        sys.argv = [["sensors_main.py"],[22],[18]]
 
         # 2. call main with the command line parameters set up
         sensors_main.main()
@@ -78,7 +94,7 @@ class TestSensors(unittest.TestCase):
         # test case sets the command line arguments that are in sys.argv)
         #
         # sys.stdout.write(str(mock_print.call_args) + "\n")
-        # sys.stdout.write(str(mock_print.call_args_list) + "\n")
+        # sys.stdout.write(str(mock_print.call_args_list) + "\n")'''
 
 if __name__ == '__main__':
     unittest.main()

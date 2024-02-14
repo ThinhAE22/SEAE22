@@ -7,16 +7,22 @@ import sys
 def main():
     limits = parse_limits()
     sensor_data = []
+    priority = parse_priority()
 
-    if len(limits) > 0 and check_limits(limits):
+    '''if len(limits) > 0 and check_limits(limits):
         sensor_data = read_sensors()
-        # This is a mockup code that prints the sensor readings
-        # to console. Would be replaced with actual implementation
-        # (whatever it might be according to the low level design).
         for row in sensor_data:
             print (row)
     else:
-        print("Error: Incorrect command line arguments.")
+        print("Error: Incorrect command line arguments.")'''
+
+    priority = parse_priority()
+    if len(priority) > 0 and check_role(priority):
+        print("Hello Administrator")
+    else:
+        print("Hello Operator")
+
+    
 
 # This is the parse_limits function for getting the temperature
 # limits from the command line parameters. Returns an array
@@ -33,6 +39,17 @@ def parse_limits():
     
     return limits
 
+#parse_role
+def parse_priority():
+    priority = []
+    try:
+        priority = [str(sys.argv[1])]
+    except Exception:
+        pass
+
+    return priority
+
+
 # This is the check_limits function that gets an array containing the
 # limits as a parameter and checks that the lower limit is smaller
 # than the higher limit. If this is the case, the function returns
@@ -46,9 +63,9 @@ def check_limits(limits):
 
 #Check role function
 def check_role(priority):
-    if priority == "first priority":
+    if priority == "administrator":
         return True
-    elif priority == "second priority":
+    elif priority == "operator":
         return False
 
 # This is a stub implementation for function read_sensors
