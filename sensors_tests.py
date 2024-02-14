@@ -54,7 +54,7 @@ class TestSensors(unittest.TestCase):
         pass
 
         
-        sys.argv = [["sensors_main.py"],["administrator"]]
+        sys.argv = [["sensors_main.py"],"administrator"]
 
         # 2. call main with the command line parameters set up
         sensors_main.cri()
@@ -62,11 +62,11 @@ class TestSensors(unittest.TestCase):
         mock_print.assert_called_with("Hello Administrator")'''
 
     @patch('builtins.print')
-    def test_check_role_administrator_integration2(self, mock_print):
+    def test_check_role_operator_integration3(self, mock_print):
         pass
 
         
-        sys.argv = [["sensors_main.py"],["operator"]]
+        sys.argv = [["sensors_main.py"],"operator"]
 
         # 2. call main with the command line parameters set up
         sensors_main.main()
